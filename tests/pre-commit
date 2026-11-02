@@ -1,0 +1,9 @@
+#!/bin/sh
+# Git pre-commit hook: run the TDBK RFTools check.
+# Install from the repo root:
+#   cp tests/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
+# Skip once with: git commit --no-verify
+sh tests/check.sh || {
+    echo "pre-commit: TDBK RFTools check failed" >&2
+    exit 1
+}
